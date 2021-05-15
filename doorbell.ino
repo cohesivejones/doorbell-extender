@@ -39,6 +39,9 @@ String clientId()
 
 void callback(char *topic, byte *payload, unsigned int length)
 {
+  digitalWrite(A3, HIGH);
+  delay(4000);
+  digitalWrite(A3, LOW);
 }
 
 bool mqttConnect()
@@ -70,6 +73,8 @@ void setup()
   Serial.begin(9600);
   while (!Serial)
     delay(10);
+
+  pinMode(A3, OUTPUT);
 
   Serial.println(APP_NAME);
   Serial.println("------------------------------\n");
