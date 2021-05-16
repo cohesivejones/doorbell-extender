@@ -17,6 +17,8 @@ You will need to add a config.h header file to get things going:
 
 #define APP_NAME "DOORBELL-EXTENDER"
 
+#define BUZZER_PIN A0
+
 /* List of MQTT topics accepted by server */
 #define DOORBELL_INACTIVE "doorbell/inactive"
 #define DOORBELL_ACTIVE "doorbell/active"

@@ -39,9 +39,10 @@ String clientId()
 
 void callback(char *topic, byte *payload, unsigned int length)
 {
-  digitalWrite(A3, HIGH);
+  Serial.println("MQTT -- doorbell pressed");
+  digitalWrite(BUZZER_PIN, HIGH);
   delay(4000);
-  digitalWrite(A3, LOW);
+  digitalWrite(BUZZER_PIN, LOW);
 }
 
 bool mqttConnect()
@@ -74,7 +75,7 @@ void setup()
   while (!Serial)
     delay(10);
 
-  pinMode(A3, OUTPUT);
+  pinMode(BUZZER_PIN, OUTPUT);
 
   Serial.println(APP_NAME);
   Serial.println("------------------------------\n");
