@@ -75,6 +75,7 @@ void setup()
   while (!Serial)
     delay(10);
 
+  pinMode(BUTTON_PIN, INPUT_PULLUP);
   pinMode(BUZZER_PIN, OUTPUT);
 
   Serial.println(APP_NAME);
@@ -90,7 +91,16 @@ void setup()
   }
 }
 
+int button_state = 0;
 void loop()
 {
+  button_state = digitalRead(BUTTON_PIN);
+  if (button_state == LOW)
+  {
+    Serial.println("MQTT -- publish open door");
+    client.publish(DOORBELL_OPEN_DOOR, EMPTY_MESSAGE);
+    delay(2000);
+  }
+
   client.loop();
 }
